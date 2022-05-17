@@ -1,0 +1,36 @@
+import React, { Component } from 'react';
+import Time from './Time'
+
+class Clock extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = { 
+            showTime: true
+         }
+
+         this.toggleShowTime=this.toggleShowTime.bind(this);
+    }
+    
+    toggleShowTime() {
+        this.setState(state => {
+            return {
+                showTime: !state.showTime
+            }
+        })
+    }
+
+    render() { 
+        const showTime = this.state.showTime;
+        return (  
+            <div class="center">
+                {showTime && <Time/>}
+                <button onClick={this.toggleShowTime}>
+                    {showTime ? 'Hide Time' : 'Show Time'}
+                </button>
+            </div>
+        );
+    }
+}
+ 
+export default Clock;
